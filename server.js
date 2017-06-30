@@ -12,16 +12,18 @@ function start(route, handle){
     const query = url.parse(req.url).query;
     console.log('Request ' + pathName + '\n' + 'Query: ' + query + '\n');
 
-    req.setEncoding("utf-8");
-    req.addListener("data", function(postDataChunk) {
-      postData += postDataChunk;
-      console.log("Received POST data chunk '"+
-      postDataChunk + "'.");
-    });
+    // req.setEncoding("utf-8");
+    // req.addListener("data", function(postDataChunk) {
+    //   postData += postDataChunk;
+    //   console.log("Received POST data chunk '"+
+    //   postDataChunk + "'.");
+    // });
 
-    req.addListener("end", function() {
-      route(handle, pathName, res, postData);
-    });
+    // req.addListener("end", function() {
+    //   route(handle, pathName, res, postData);
+    // });
+
+    route(handle, pathName, res, req);
 
     // res.statusCode = 200;
     // res.setHeader('Content-Type', 'text/plain');
